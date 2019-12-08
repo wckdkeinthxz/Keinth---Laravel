@@ -27,6 +27,9 @@
                     <td>
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit-student-modal-{{$student->id}}">Edit</button>
                         @include('students.modals._edit-student-modal')
+
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-student-modal-{{$student->id}}">Delete</button>
+                        @include('students.modals._delete-student-modal')
                     </td>
            				</tr>
               @endforeach
