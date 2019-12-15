@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use Carbon\Carbon;
+use App\Attendance;
+
 
 class StudentController extends Controller
 {
@@ -59,6 +62,50 @@ class StudentController extends Controller
 
             return redirect()->back()->withStatus('Student Deleted.');
         }
+
+
+    public function checkAttendance(){
+        $students = Student::all();
+        $todaysDate = Carbon::today();
+
+        return view('students.check-attendance', compact('students','todaysDate') );
+    }
+
+    public function attendancePresent(Request $request){
+        $student = Student::find($request->id);
+        $attendance = Attendance::where('user_id', $request->id)
+                                ->whereDate('attendance_date', Carbon::parse($request->todays_date))
+                                ->first();
+
+        if(!$attendance){
+            $attendance = new Attendance;
+        }
+
+        $attendance->user_id = $request->id;
+        $attendance->attendance_date = Carbon::parse($request->todays_date);
+        $attendance->is_present = true;
+        $attendance->save();
+
+        return redirect()->back()->withStatus($student->full_name.' is present.');
+    }   
+
+    public function attendanceAbsent(Request $request){
+        $student = Student::find($request->id);
+        $attendance = Attendance::where('user_id', $request->id)
+                                ->whereDate('attendance_date', Carbon::parse($request->todays_date))
+                                ->first();
+
+        if(!$attendance){
+            $attendance = new Attendance;
+        }
+
+        $attendance->user_id = $request->id;
+        $attendance->attendance_date = Carbon::parse($request->todays_date);
+        $attendance->is_present = false;
+        $attendance->save();
+
+        return redirect()->back()->withStatus($student->full_name.' is absent.');
+    }
 
 }
 

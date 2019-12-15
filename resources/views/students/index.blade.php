@@ -7,6 +7,9 @@
        		<h1>Students</h1>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-student-modal">Add Student</button>
        		@include('students.modals._add-student-modal')
+
+          <a href="{{ route('students.check_attendance') }}" class="btn btn-primary">Check Today's Attendance</a>
+
           <table class='table'>
        			<thead>
        				<tr>

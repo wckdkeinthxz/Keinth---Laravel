@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('students.index');
 });
 
 Auth::routes();
@@ -25,3 +25,6 @@ Route::get('/students/add', 'StudentController@addStudent')->name('students.add'
 Route::post('/students/store', 'StudentController@store')->name('students.store');
 Route::post('/students/update', 'StudentController@update')->name('students.update');
 Route::post('/students/destroy', 'StudentController@destroy')->name('students.destroy');
+Route::get('/students/check-attendance', 'StudentController@checkAttendance')->name('students.check_attendance');
+Route::post('/students/{id}/attendance-present', 'StudentController@attendancePresent')->name('students.attendance-present');
+Route::post('/students/{id}/attendance-absent', 'StudentController@attendanceAbsent')->name('students.attendance-absent');
