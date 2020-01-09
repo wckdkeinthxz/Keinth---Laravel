@@ -28,3 +28,4 @@ Route::post('/students/destroy', 'StudentController@destroy')->name('students.de
 Route::get('/students/check-attendance', 'StudentController@checkAttendance')->name('students.check_attendance');
 Route::post('/students/{id}/attendance-present', 'StudentController@attendancePresent')->name('students.attendance-present');
 Route::post('/students/{id}/attendance-absent', 'StudentController@attendanceAbsent')->name('students.attendance-absent');
+Route::get('/students/attendance-report', 'StudentController@attendanceReport')->name('students.attendance_report');

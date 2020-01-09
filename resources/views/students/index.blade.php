@@ -10,6 +10,8 @@
 
           <a href="{{ route('students.check_attendance') }}" class="btn btn-primary">Check Today's Attendance</a>
 
+           <a href="{{ route('students.attendance_report') }}" class="btn btn-primary">Attendance Report</a>
+
           <table class='table'>
        			<thead>
        				<tr>

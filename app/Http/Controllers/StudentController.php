@@ -107,5 +107,12 @@ class StudentController extends Controller
         return redirect()->back()->withStatus($student->full_name.' is absent.');
     }
 
+    public function attendanceReport(){
+        $students = Student::all();
+        $attendance = Attendance::all();
+        $dates = Attendance::groupBy('attendance_date')->pluck('attendance_date');
+        return view('students.attendance-report', compact('dates', 'students'));
+    }
+
 }
 
