@@ -20,12 +20,14 @@
        			</thead>
        			<tbody>
                 @foreach($students as $student)
-                    <th>{{ $loop->iteration }}</th>
-                    <th>{{ $student->full_name }}}</th>
+                    <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $student->full_name }}</td>
 
                     @foreach($dates as $date)
-                      <th>{{ $student->attendance($date) }}</th>
+                      <td>@if($student->is_present($date))<i class="fa fa-check"></i>@else<i class="fa fa-times"></i>@endif</td>
                     @endforeach
+                    <tr>
                 @endforeach
        			</tbody>
        			</tbody>

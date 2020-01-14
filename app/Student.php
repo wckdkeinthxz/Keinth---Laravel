@@ -22,4 +22,8 @@ class Student extends Model
     		return false;
     	}
   	 }
+
+     public function attendances(){
+         return $this->hasMany('App\Attendance');
+     }
 }
