@@ -23,12 +23,14 @@ class StudentController extends Controller
     	$request->validate([
     		'first_name' => 'required',
     		'last_name' => 'required',
+            'year_level' => 'required',
     	]);
 
     	$student = new Student;
     	$student->first_name = $request->first_name;
     	$student->middle_name = $request->middle_name ? $request->middle_name : 'N/A';
     	$student->last_name = $request->last_name;
+        $student->year_level = $request->year_level;
     	$student->save();
 
     	return redirect()->route('students.index')->withStatus('Student Added.');
@@ -37,7 +39,8 @@ class StudentController extends Controller
     public function update(Request $request){
         $request->validate([
             'first_name' => 'required',
-            'last_name' => 'required'
+            'last_name' => 'required',
+            'year_level' => 'required'
         ]);
 
 
@@ -46,6 +49,7 @@ class StudentController extends Controller
             $student->first_name = $request->first_name;
             $student->last_name = $request->last_name;
             $student->middle_name = $request->middle_name ? $request->middle_name : 'N/A';
+            $student->year_level = $request->year_level;
             $student->save();
         }
 

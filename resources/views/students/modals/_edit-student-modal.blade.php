@@ -15,6 +15,11 @@
                 <input class="form-control mb-2" name="first_name" placeholder="First Name" value="{{ $student->first_name}}" />
                 <input class="form-control mb-2" name="middle_name" placeholder="Middle Name" value="{{ $student->middle_name}}" />
                 <input class="form-control mb-2" name="last_name" placeholder="Last Name" value="{{ $student->last_name}}" />
+                <select class="form-control mb-2" name="year_level" placeholder="Year Level">
+                  @for($i=1;$i<=5;$i++)
+                    <option value="{{ $i }}" @if($student->year_level == $i) selected @endif >{{$i}}</option>
+                  @endfor
+                </select>      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

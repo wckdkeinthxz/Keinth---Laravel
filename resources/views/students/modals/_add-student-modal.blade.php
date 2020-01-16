@@ -14,6 +14,11 @@
                 <input class="form-control mb-2" name="first_name" placeholder="First Name"/>
                 <input class="form-control mb-2" name="middle_name" placeholder="Middle Name"/>
                 <input class="form-control mb-2" name="last_name" placeholder="Last Name"/>
+                <select class="form-control mb-2" name="year_level" placeholder="Year Level">
+                  @for($i=1;$i<=5;$i++)
+                    <option value="{{ $i }}">{{$i}}</option>
+                  @endfor
+                </select> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
